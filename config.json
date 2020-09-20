@@ -1,0 +1,12 @@
+{
+  "repos": [
+
+    {
+      "link": "https://github.com/facebook/react",
+      "issue_tags": [
+        "good first issue"
+      ]
+    }
+  ],
+  "interval": 10
+}
