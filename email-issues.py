@@ -114,7 +114,7 @@ def run():
     send_email(from_email, from_password, server, port, to_email, content, subject)
   s.enter(timeout, 1, run)
 
-s.enter(timeout, 1, run)
+s.enter(0, 1, run)
 
 s.run(True)
 
