@@ -34,7 +34,7 @@ def build_issues_url(url, tag):
     return url + "/issues"
 
 def build_single_issue_url(url, issue_id):
-  return url + '/issues/' + issue_id
+  return url + '/issues/' + issue_id[1:]
 
 def get_issues_html(url):
   return requests.get(url).content
@@ -82,24 +82,25 @@ def get_recent_issues(issues_html, from_data):
       new_issues.append(issue_id)
   return new_issues
 
-config_path = './config.json'
-config_raw = io.open(config_path, mode="r")
-config= json.loads(config_raw.read())
-repos = config['repos']
-timeout = config['interval']
-from_email = config['sender-email']
-to_email = config['to-email']
-from_password = config['sender-password']
-server = config['smtp-server']
-port = config['server-port']
-subject = "New issues found!"
 
-for repo in repos:
-  link = repo['link']
-  tags = repo['issue_tags']
-  repo['urls'] = [ build_issues_url(link, t) for t in tags ]
 
 def run():
+  config_path = './config.json'
+  config_raw = io.open(config_path, mode="r")
+  config= json.loads(config_raw.read())
+  repos = config['repos']
+  timeout = config['interval']
+  from_email = config['sender-email']
+  to_email = config['to-email']
+  from_password = config['sender-password']
+  server = config['smtp-server']
+  port = config['server-port']
+  subject = "New issues found!"
+
+  for repo in repos:
+    link = repo['link']
+    tags = repo['issue_tags']
+    repo['urls'] = [ build_issues_url(link, t) for t in tags ]
   global last_time_checked
   content = ''
   for repo in repos:
