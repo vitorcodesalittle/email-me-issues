@@ -13,5 +13,5 @@
   "to-email": "",
   "smtp-server": "",
   "server-port": "",
-  "interval": 30
+  "interval": 10800
 }
