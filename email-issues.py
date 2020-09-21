@@ -107,7 +107,7 @@ def run():
       html = get_issues_html(url)
       issues = get_recent_issues(html, last_time_checked)
       if (len(issues) > 0):
-        content = content + "\nNEW ISSUES OF {}: {}".format(repo, ', '.join(map(lambda issue_id: build_single_issue_url(url, issue_id), issues)))
+        content = content + "\nNEW ISSUES OF {}: {}".format(repo['link'], ', '.join(map(lambda issue_id: build_single_issue_url(url, issue_id), issues)))
   last_time_checked = datetime.now()
   if (content !=''):
     send_email(from_email, from_password, server, port, to_email, content, subject)
