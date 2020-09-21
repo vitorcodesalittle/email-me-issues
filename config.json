@@ -8,5 +8,8 @@
       ]
     }
   ],
+  "sender-email": "<YOUR-EMAIL>",
+  "sender-password": "<SENDER-EMAIL-PASSWORD>",
+  "smtp-server": "<smtp.gmail.com, localhost, ...>",
   "interval": 10
 }
